@@ -1,0 +1,46 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+ifstream fin("puteri35.in");
+ofstream fout("puteri35.out");
+int long long Mult3, Mult5, n;
+int long long gener(int a, int b){
+    int long long k=0, p=1;
+    while(a){
+        if(a%2){
+            k+=p;
+        }
+        p=p*b;
+        a/=2;
+    }
+    return k;
+}
+int main()
+{
+    fin>>n;
+    int long long i=1, j=1;
+    while(i<=n && j<=n){
+        Mult3=gener(i,3);
+        Mult5=gener(j,5);
+        if(Mult5>Mult3){
+            fout<<Mult3<<'\n';
+            i++;
+        }
+        else{
+            fout<<Mult5<<'\n';
+            j++;
+        }
+    }
+    while(i<=n){
+        Mult3=gener(i, 3);
+        fout<<Mult3<<'\n';
+        i++;
+    }
+     while(j<=n){
+        Mult5=gener(j, 5);
+        fout<<Mult5<<'\n';
+        j++;
+    }
+
+    return 0;
+}
